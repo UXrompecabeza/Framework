@@ -1,0 +1,79 @@
+@import 'mediaqueries.css';
+
+/* CUSTOM CLASSES */
+.center {
+    text-align: center;
+}
+button, .btn {
+    border-radius: 0 !important;
+}
+ label.error {
+    font-size: 13px;
+    color: #0984e3;
+ }
+
+
+/* BODY */
+body {
+    margin: 0%;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.main-container {
+    padding: 0 5em;
+}
+
+
+
+
+.contacto {
+    padding: 1em 1em 2em;
+}
+
+.contacto h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.contacto button {
+    margin-top: 1em;
+}
+
+.contacto form {
+    background-color: #81ecec;
+    border-radius: 8px;
+    padding: 1.5em;
+}
+.contacto button {
+    padding: .5em 3em !important;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+/* TITULOS */
+
+.title-lg {
+    font-size: 20px;
+}
+.title-md {
+    font-size: 16px;
+}
+.bajada {
+    color: #888;
+    font-size: 12px;
+}
+p {
+    color: #333;
+    font-size: 14px;
+}
+
+/* BOTONES */
+
+.btn-outline-black {
+    text-transform: uppercase;
+    border: 2px solid black;
+    padding: .5em;
+    font-weight: 600;
+    background: transparent;
+}
+

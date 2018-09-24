@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- ESTILOS CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- FRAMEWORK BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <title>Validaciones</title>
+</head>
+<body>
+            
+    <!-- FORMULARIO -->
+    <div id="contacto" class="contacto" data-aos="fade-up">
+        <div class="main-container">
+            <h2>Contáctanos</h2>
+            
+            <form class="row" action="#" id="miformulario" >
+                <!-- NOMBRE COMPLETO -->
+                <div class="form-group col-md-6 " >
+                    <label for="inputNombre">Nombre Completo</label>
+                    <input type="text" class="form-control" name="inputNombre" id="inputNombre" minlength="3" aria-describedby="nombreHelp" placeholder="Nombre completo">
+                    <small id="emailHelp" class="form-text text-muted"></small>
+                </div>
+                    <!-- RUT -->
+                    <div class="form-group col-md-6 ">
+                        <label for="inputRut">Rut</label>
+                        <input type="text"  class="form-control input-rut" name="inputRut" id="inputRut" maxlength="12" aria-describedby="nombreHelp" placeholder="Rut ej:11.111.111-1">
+                    </div>
+                <!-- EMAIL -->
+                <div class="form-group col-md-6 ">
+                    <label for="inputEmail">Correo electrónico</label>
+                    <input type="email" class="form-control" name="inputEmail" id="inputEmail" aria-describedby="emailHelp" placeholder="nombre@dominio.cl">
+                    <small id="emailHelp" class="form-text text-muted"></small>
+                </div>
+                
+                <!-- FECHA DE NACIMIENTO  -->
+                <div class="form-group col-md-6 ">
+                    <label for="inputFechaNacimiento">Fecha Nacimiento</label>
+                    <input type="date" class="form-control" name="inputFechaNacimiento" id="inputFechaNacimiento"  name="inputFechaNacimiento" max="2000-12-31" aria-describedby="fechaNacimientoHelp" >
+                </div>
+                <!-- TELEFONO DE CONTACTO -->
+                <div class="form-group col-md-6 ">
+                    <label for="inputTelefono">Telefono</label>
+                    <input type="tel" class="form-control" name="inputTelefono" id="inputTelefono" maxlength="9" aria-describedby="TelefonoHelp" name="inputTelefono"  placeholder="Ingrese telefono">
+                    <small id="rutHelp" class="form-text text-muted">Ejemplo: 215333722</small>
+                </div>
+                <!-- REGION  -->
+                <div class="form-group col-md-6 ">
+                    <label for="inputRegion">Región</label>
+                    <select id="inputRegion"  class="form-control" name="inputregion" id="inputregion" required>
+                        <option value="0" disabled selected>Selecione...</option >
+                        <option value="TA">I Tarapacá</option>
+                        <option value="AN">II Antofagasta</option>
+                        <option value="ata">III Atacama</option>
+                        <option value="CO">IV Coquimbo</option>
+                        <option value="VA">V Valparaíso</option>
+                        <option value="ME">RM Metropolitana</option>
+                        <option value="OH">VI O'Higgins</option>
+                        <option value="MA">VII Maule</option>
+                        <option value="BI">VIII Biobío</option>
+                        <option value="AR">IX Araucanía</option>
+                        <option value="RI">XIV Los Ríos</option>
+                        <option value="LA">X Los Lagos</option>
+                        <option value="AI">XI Aisén</option>
+                        <option value="MAG">XII Magallanes y Antártica</option>
+                    </select>
+                </div>
+                <!-- CIUDAD -->
+                <div class="form-group col-md-6 ">
+                    <label for="inputCiudad">Ciudad</label>
+                    <select id="inputCiudad" class="form-control" name="inputCiudad" id="inputCiudad" required>
+                        <option disabled selected>seleciones...</option>
+                        <option value="01">Santiago de chile</option>
+                        <option value="02">concepción</option>
+                        <option value="03">Valdivia</option>
+                        <option value="04">Viña del M</option>
+                        <option value="05">La Serena</option>
+                        <option value="06">Providencia</option>
+                        <option value="07">Iquique</option>
+                        <option value="08">Arica</option>
+                        <option value="09">Temuco</option>
+                        <option value="10">Rancagua</option>
+
+
+
+                    </select>
+                </div>
+                <!-- TIPO DE VIVIENDA -->
+                <div class="form-group col-md-6 ">
+                    <label for="inputTipoVivienda">Tipo de vivienda</label>
+                    <select id="inputTipoVivienda" class="form-control" name="inputtipo" id="inputtipo" required>
+                        <option value="0" disabled selected>Selecione...</option>
+                        <option value="1">Casa con patio grande</option>
+                        <option value="2">Casa con patio pequeño</option>
+                        <option value="3">Casa sin patio</option>
+                        <option value="4">Departamento</option>
+                    </select>
+                </div>
+                <!-- EMAIL -->
+                <div class="center container">
+                    <button type="submit" class="btn btn btn-primary btn-lg">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    <!-- JQUERY -->
+    <script src="js/libs/jquery.min.js"></script>
+    <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="jquery-1.11.1.min.js"></script>    
+
+    <!-- BOOTSTRAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <!-- PLUGIN RUT CHILENO -->
+    <script src="js/libs/rut-chileno/jquery.rut.min.js"></script>
+    <!-- PLUGIN JQUERY VALIDATE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+    <!-- FUNCIONES PROPIAS -->
+    <script src="js/funciones.js"></script>
+</body>
+</html>
