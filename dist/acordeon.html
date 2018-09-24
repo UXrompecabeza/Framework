@@ -1,0 +1,339 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="css/libs/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,700" rel="stylesheet"/>
+    <title>Rompecabeza UX</title>
+  </head>
+  <body>
+    <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="index.html">Rompecabeza UX</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"> <a class="nav-link" href="validaciones.html">Validaciones </a></li>
+          <li class="nav-item active"> <a class="nav-link" href="acordeon.html">Acordeón</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main-container">
+      <h1>Acordeón</h1>
+      <p>Componente acordeón html/css/jquery</p><br/>
+      <section>
+        <div class="container">
+          <article>
+            <div class="faq base parbase section xk-component xk-section-base" data-xk-section="v1">
+              <div class="container">
+                <div class="accordion" data-faq="most_common">
+                  <div class="accordion__toggle-all brand-1st hidden-xs"><span class="expandAll">Expandir Todo</span><span class="collapseAll">Colapsar Todo</span></div>
+                  <div class="border-top">
+                    <div class="accordion__title"><span class="brand-1st">Pregunta 1</span><img class="icon icon-plus accordion__title__icon" src="assets/icons/icon_more.svg" alt="ver má"/><img class="icon icon-minus accordion__title__icon accordion__title__icon--hide" src="assets/icons/icon_less.svg" alt="ver má"/></div>
+                    <div class="accordion__content">
+                      <div class="row content_bg">
+                        <div class="col-md-6">
+                          <p class="title_label">¿Cuánto te gustaría recibir como pensión?</p>
+                          <div class="content-input">
+                            <input class="input-lg" type="text" min="0" max="12000000000" onkeypress="return validaNUM(event)" onkeyup="format(this)" onchange="format(this)"/>
+                            <p>mensual</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <p class="title_label">¿A qué edad piensas pensionarte?</p>
+                          <div class="content-input">
+                            <input class="input-sm" type="number" min="18" max="99" maxlength="2" onkeypress="return validaNUM(event)" value="0" size="2"/>
+                            <p>años</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-top">
+                    <div class="accordion__title"><span class="progres brand-1st clickDos">Pregunta 2</span><img class="icon icon-plus accordion__title__icon" src="assets/icons/icon_more.svg" alt="ver má"/><img class="icon icon-minus accordion__title__icon accordion__title__icon--hide" src="assets/icons/icon_less.svg" alt="ver má"/></div>
+                    <div class="accordion__content">
+                      <div class="row content_bg">
+                        <div class="container">
+                          <ol class="d1Dest" id="dinamico"></ol>
+                          <li class="d1 botonOculto">
+                            <div class="row">
+                              <div class="col-md-3">
+                                <p class="title_label">Tipo de Cuenta</p><span class="custom-dropdown">
+                                  <select name="Selecciona un producto" title="Selecciona un producto" data-required="true" aria-required="true">
+                                    <option value="" selected="">Selecciona</option>
+                                    <option class="general" value="Cuenta Obligatoria">Cuenta Obligatoria</option>
+                                    <option class="general" value="APV">APV</option>
+                                    <option class="general" value="Depósitos convenidos">Depósitos Convenidos</option>
+                                    <option class="general" value="Cuenta 2">Cuenta 2</option>
+                                  </select></span>
+                              </div>
+                              <div class="col-md-3">
+                                <p class="title_label">Monto</p>
+                                <input onkeypress="return validaNUM(event)" onkeyup="format(this)" onchange="format(this)" min="0" max="12000000000" value="0" type="text"/>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="container">
+                                  <p class="title_label">¿En qué Fondo/s?</p>
+                                </div>
+                                <div class="container">
+                                  <ul id="botoneraFondos">
+                                    <form action=""></form>
+                                    <li>
+                                      <input id="fondo-A" type="radio" name="selector" checked="checked"/>
+                                      <label for="fondo-A"></label>
+                                      <div class="check">A</div>
+                                    </li>
+                                    <li>
+                                      <input id="fondo-B" type="radio" name="selector"/>
+                                      <label for="fondo-B"></label>
+                                      <div class="check">B</div>
+                                    </li>
+                                    <li>
+                                      <input id="fondo-C" type="radio" name="selector"/>
+                                      <label for="fondo-C"></label>
+                                      <div class="check">C</div>
+                                    </li>
+                                    <li>
+                                      <input id="fondo-D" type="radio" name="selector"/>
+                                      <label for="fondo-D"></label>
+                                      <div class="check">D</div>
+                                    </li>
+                                    <li>
+                                      <input id="fondo-E" type="radio" name="selector"/>
+                                      <label for="fondo-E"></label>
+                                      <div class="check">E</div>
+                                    </li>
+                                  </ul>
+                                  <input class="input-sm in-perc-fondos" onkeypress="return validaNUM(event)" onkeyup="format(this)" onchange="format(this)" type="text" step="1" min="0" max="100" maxlength="3" value="0"/><span class="peso">%</span>
+                                </div>
+                                <div class="container">
+                                  <ul id="botoneraFondos">
+                                    <form action="">
+                                      <li>
+                                        <input id="fondo-A-filaDos" type="radio" name="selector" checked="checked"/>
+                                        <label for="fondo-A-filaDos"></label>
+                                        <div class="check">A</div>
+                                      </li>
+                                      <li>
+                                        <input id="fondo-B-filaDos" type="radio" name="selector"/>
+                                        <label for="fondo-B-filaDos"></label>
+                                        <div class="check">B</div>
+                                      </li>
+                                      <li>
+                                        <input id="fondo-C-filaDos" type="radio" name="selector"/>
+                                        <label for="fondo-C-filaDos"></label>
+                                        <div class="check">C</div>
+                                      </li>
+                                      <li>
+                                        <input id="fondo-D-filaDos" type="radio" name="selector"/>
+                                        <label for="fondo-D-filaDos"></label>
+                                        <div class="check">D</div>
+                                      </li>
+                                      <li>
+                                        <input id="fondo-E-filaDos" type="radio" name="selector"/>
+                                        <label for="fondo-E-filaDos"></label>
+                                        <div class="check">E</div>
+                                      </li>
+                                    </form>
+                                  </ul>
+                                  <input class="input-sm in-perc-fondos" onkeypress="return validaNUM(event)" type="number" min="0" max="100" maxlength="3" value="0"/><span class="peso">%</span>
+                                </div>
+                              </div>
+                            </div><a class="btdel" href="#"><img src="img/icon-close.svg" alt=""/></a>
+                          </li>
+                        </div>
+                      </div>
+                      <div class="row total_box">
+                        <div class="col-md-8">
+                          <div class="content-input">
+                            <p>
+                              Total
+                               Ahorros
+                            </p>
+                            <input class="input-md" type="text" value="0" onkeypress="return validaNUM(event)" onkeyup="format(this)" onchange="format(this)"/>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12"><a id="btclon" href="#">+ Agregar otra cuenta o ahorro</a></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-top">
+                    <div class="accordion__title"><span class="progres brand-1st clickTres">Pregunta 3</span><img class="icon icon-plus accordion__title__icon" src="assets/icons/icon_more.svg" alt="ver má"/><img class="icon icon-minus accordion__title__icon accordion__title__icon--hide" src="assets/icons/icon_less.svg" alt="ver má"/></div>
+                    <div class="accordion__content">
+                      <ol>
+                        <li class="d2 botonOculto">
+                          <div class="row content_bg">
+                            <div class="col-lg-3 col-md-3">
+                              <p class="title_label">Tipo de Cuenta</p>
+                              <div class="clearfix"></div><span class="custom-dropdown">
+                                <select class="form-user-ctrl user-select" id="prod-afp" name="Selecciona un producto" title="Selecciona un producto" data-required="true" aria-required="true">
+                                  <option value="" selected="">Selecciona</option>
+                                  <option class="general" value="APV">APV</option>
+                                  <option class="general" value="Depósitos convenidos">Depósitos Convenidos</option>
+                                  <option class="general" value="Cuenta 2">Cuenta 2</option>
+                                  <option class="general" value="Bono">Bono Reconocimiento</option>
+                                </select></span>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                              <p class="title_label">Monto</p>
+                              <div class="clearfix"></div>
+                              <input class="bor-bott pp_2" type="text" min="0" max="12000000000" onkeypress="return validaNUM(event)" onkeyup="format(this)" onchange="format(this)" value="0"/>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                              <div class="container">
+                                <p class="title_label">¿En qué Fondo/s?</p>
+                              </div>
+                              <div class="container">
+                                <ul id="botoneraFondos">
+                                  <li>
+                                    <input id="fondo-A2a" type="radio" name="selector2a" checked="checked"/>
+                                    <label for="fondo-A2a"></label>
+                                    <div class="check">A</div>
+                                  </li>
+                                  <li>
+                                    <input id="fondo-B2a" type="radio" name="selector2a"/>
+                                    <label for="fondo-B2a"></label>
+                                    <div class="check">B</div>
+                                  </li>
+                                  <li>
+                                    <input id="fondo-C2a" type="radio" name="selector2a"/>
+                                    <label for="fondo-C2a"></label>
+                                    <div class="check">C</div>
+                                  </li>
+                                  <li>
+                                    <input id="fondo-D2a" type="radio" name="selector2a"/>
+                                    <label for="fondo-D2a"></label>
+                                    <div class="check">D</div>
+                                  </li>
+                                  <li>
+                                    <input id="fondo-E2a" type="radio" name="selector2a"/>
+                                    <label for="fondo-E2a"></label>
+                                    <div class="check">E</div>
+                                  </li>
+                                </ul>
+                                <input class="input-sm in-perc-fondos" type="number" min="0" max="100" maxlength="3" value="0" onkeypress="return validaNUM(event)"/><span class="peso">%</span>
+                              </div>
+                              <div class="container">
+                                <ul id="botoneraFondos">
+                                  <li>
+                                    <input id="fondo-A2b" type="radio" name="selector2b" checked="checked"/>
+                                    <label for="fondo-A2b"></label>
+                                    <div class="check">A</div>
+                                  </li>
+                                  <li>
+                                    <input id="fondo-B2b" type="radio" name="selector2b"/>
+                                    <label for="fondo-B2b"></label>
+                                    <div class="check">B</div>
+                                  </li>
+                                  <li>
+                                    <input id="fondo-C2b" type="radio" name="selector2b"/>
+                                    <label for="fondo-C2b"></label>
+                                    <div class="check">C</div>
+                                  </li>
+                                  <li>
+                                    <input id="fondo-D2b" type="radio" name="selector2b"/>
+                                    <label for="fondo-D2b"></label>
+                                    <div class="check">D</div>
+                                  </li>
+                                  <li>
+                                    <input id="fondo-E2b" type="radio" name="selector2b"/>
+                                    <label for="fondo-E2b"></label>
+                                    <div class="check">E</div>
+                                  </li>
+                                </ul>
+                                <input class="input-sm in-perc-fondos" type="number" min="0" max="100" maxlength="3" value="0" onkeypress="return validaNUM(event)"/><span class="peso">%</span>
+                              </div>
+                            </div>
+                            <div class="container">
+                              <p class="title_label">¿Por cuánto tiempo vas a ahorrar?</p>
+                              <input id="unica-vez" type="radio" name="selector"/>
+                              <label class="radio" for="unica-vez">Única Vez</label>
+                              <input id="mensual" type="radio" name="selector"/>
+                              <label class="radio" for="mensual">Mensual</label><a class="btdel-two" href="#"><img src="img/icon-close.svg" alt=""/></a>
+                            </div>
+                          </div>
+                        </li>
+                        <div class="row">
+                          <div class="container"><a id="btclon-two" href="#">+ Agregar otra cuenta o ahorro</a></div>
+                        </div>
+                      </ol>
+                    </div>
+                  </div>
+                  <div class="border-top">
+                    <div class="accordion__title"><span class="progres brand-1st clickCuatro">Pregunta 4</span><img class="icon icon-plus accordion__title__icon" src="assets/icons/icon_more.svg" alt="ver má"/><img class="icon icon-minus accordion__title__icon accordion__title__icon--hide" src="assets/icons/icon_less.svg" alt="ver má"/></div>
+                    <div class="accordion__content">
+                      <div class="row content_bg">
+                        <div class="container">
+                          <ol class="d3Dest" id="dinamico"></ol>
+                          <li class="d3 botonOculto">
+                            <div class="row">
+                              <div class="col-lg-6 col-md-12">
+                                <p class="title_label">Parentesco</p><span class="custom-dropdown">
+                                  <select class="form-user-ctrl user-select" id="prod-afp" name="Selecciona un producto" title="Selecciona un producto" data-required="true" aria-required="true">
+                                    <option value="" selected="">Selecciona</option>
+                                    <option class="general" value="Cónyuge femenino">Cónyuge femenino</option>
+                                    <option class="general" value="Cónyuge masculino">Cónyuge masculino</option>
+                                    <option class="general" value="Conviviente Civil Femenino">Conviviente Civil Femenino</option>
+                                    <option class="general" value="Conviviente Civil Masculino">Conviviente Civil Masculino</option>
+                                    <option class="general" value="Conviviente Femenino">Conviviente Femenino</option>
+                                    <option class="general" value="Conviviente Masculino">Conviviente Masculino</option>
+                                    <option class="general" value="Hija">Hija</option>
+                                    <option class="general" value="Hijo">Hijo</option>
+                                    <option class="general" value="Madre">Madre</option>
+                                    <option class="general" value="Padre">Padre</option>
+                                  </select></span>
+                              </div>
+                              <div class="col-lg-6 col-md-12">
+                                <p class="title_label top">Nacimiento</p>
+                                <div class="BirthDate fixipad" id="BirthDate">
+                                  <input class="exc col-md-3 birthDateMonth required" id="BirthDated" data-required="true" aria-required="true" type="text" placeholder="DD" maxlength="2" size="2" onkeypress="return validaNUM(event)"/>
+                                  <label class="pp_5 col-md-1 sectionBar">-</label>
+                                  <input class="exc col-md-3 birthDateDay required" id="BirthDatem" data-required="true" aria-required="true" type="text" placeholder="MM" maxlength="2" size="2" onkeypress="return validaNUM(event)"/>
+                                  <label class="pp_5 col-md-1 sectionBar">-</label>
+                                  <input class="exc col-md-3 birthDateYear required" id="BirthDatey" data-required="true" aria-required="true" type="text" placeholder="AAAA" maxlength="4" size="4" onkeypress="return validaNUM(event)"/>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-6">
+                                <p class="title_label top">Estado Civil</p><span class="custom-dropdown">
+                                  <select class="form-user-ctrl user-select" id="prod-afp" name="Selecciona un producto" title="Selecciona un producto" data-required="true" aria-required="true">
+                                    <option value="" selected="">Selecciona</option>
+                                    <option class="general" value="Soltero">Soltero/a</option>
+                                    <option class="general" value="Casado">Casado/a</option>
+                                    <option class="general" value="Conviviente Civil (AUC)">Conviviente Civil (AUC)</option>
+                                    <option class="general" value="Divorciado">Divorciado/a</option>
+                                    <option class="general" value="Viudo">Viudo/a</option>
+                                  </select></span>
+                              </div>
+                              <div class="col-lg-6">
+                                <p class="title_label top">Grado de Invalidez</p><span class="custom-dropdown">
+                                  <select class="form-user-ctrl user-select" id="prod-afp" name="Selecciona un producto" title="Selecciona un producto" data-required="true" aria-required="true">
+                                    <option value="" selected="">Selecciona</option>
+                                    <option class="general" value="Sin invalidez">Sin invalidez</option>
+                                    <option class="general" value="Invalidez total">Invalidez total</option>
+                                    <option class="general" value="Invalidez parcial">Invalidez parcial</option>
+                                  </select></span>
+                              </div>
+                            </div><a class="btdel-three" href="#"><img src="img/icon-close.svg" alt=""/></a>
+                          </li>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="container"><a id="btclon-three" href="#">+ Agregar otro</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+    <script src="js/libs/jquery-3.3.1.min.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/metlife-v2.0.js"></script>
+  </body>
+</html>

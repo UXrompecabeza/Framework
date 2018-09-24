@@ -1,0 +1,40 @@
+@media (max-width: 768px) {
+    .main-container {
+        margin: 0 7px!important;
+        width: auto;
+    }
+    .hide-sm {
+        visibility: hidden;
+        display: none;
+    }
+    .show-sm {
+        visibility: visible;
+        display: block;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1022px) {
+    .main-container{
+        width: 700px!important;
+    }
+    .hide-md {
+        visibility: hidden;
+        display: none;
+    }
+    .show-md {
+        visibility: visible;
+        display: block;
+    }
+}
+@media (min-width: 1023px) {
+    .main-container {
+        width: 900px!important;
+    }
+    .hide-lg {
+        visibility: hidden;
+        display: none;
+    }
+    .show-lg {
+        visibility: visible;
+        display: block;
+    }
+}

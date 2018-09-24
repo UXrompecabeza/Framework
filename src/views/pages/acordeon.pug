@@ -1,0 +1,292 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    link(rel='stylesheet', href='css/libs/bootstrap.min.css')
+    link(rel='stylesheet', href='css/styles.css')
+    link(href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,700" rel="stylesheet") 
+    title Rompecabeza UX
+
+    
+  body
+    - var state2 = 'active'
+    include ../components/header
+    .main-container
+      h1 Acordeón
+      p Componente acordeón html/css/jquery
+      br
+      section
+        .container
+          article
+            .faq.base.parbase.section.xk-component.xk-section-base(data-xk-section='v1')
+              .container
+                .accordion(data-faq='most_common')
+                  .accordion__toggle-all.brand-1st.hidden-xs
+                    span.expandAll Expandir Todo
+                    span.collapseAll Colapsar Todo
+                  .border-top
+                    .accordion__title
+                      span.brand-1st Pregunta 1
+                      img.icon.icon-plus.accordion__title__icon(src='assets/icons/icon_more.svg', alt='ver má')
+                      img.icon.icon-minus.accordion__title__icon.accordion__title__icon--hide(src='assets/icons/icon_less.svg', alt='ver má')
+                    .accordion__content
+                      .row.content_bg
+                        .col-md-6
+                            p.title_label ¿Cuánto te gustaría recibir como pensión?
+                            //- span.peso $
+                            .content-input
+                              input.input-lg(type='text', min='0', max='12000000000', onkeypress='return validaNUM(event)', onkeyup='format(this)', onchange='format(this)')
+                              p mensual
+                        .col-md-6
+                          p.title_label ¿A qué edad piensas pensionarte?
+                          .content-input
+                            input.input-sm(type='number', min='18', max='99', maxlength='2', onkeypress='return validaNUM(event)', value='0', size='2')
+                            p años
+                  .border-top
+                    .accordion__title
+                      span.progres.brand-1st.clickDos Pregunta 2
+                      img.icon.icon-plus.accordion__title__icon(src='assets/icons/icon_more.svg', alt='ver má')
+                      img.icon.icon-minus.accordion__title__icon.accordion__title__icon--hide(src='assets/icons/icon_less.svg', alt='ver má')
+                    .accordion__content
+                      .row.content_bg
+                        .container
+                          ol#dinamico.d1Dest
+                          li.d1.botonOculto
+                            .row
+                              .col-md-3
+                                  p.title_label Tipo de Cuenta
+                                  span.custom-dropdown
+                                    select(name='Selecciona un producto', title='Selecciona un producto', data-required='true', aria-required='true')
+                                      option(value='', selected='') Selecciona
+                                      option.general(value='Cuenta Obligatoria') Cuenta Obligatoria
+                                      option.general(value='APV') APV
+                                      option.general(value='Depósitos convenidos') Depósitos Convenidos
+                                      option.general(value='Cuenta 2') Cuenta 2
+                              .col-md-3
+                                  p.title_label Monto
+                                  //- span.peso $
+                                  input(onkeypress='return validaNUM(event)', onkeyup='format(this)', onchange='format(this)', min='0', max='12000000000', value='0', type="text")
+                              .col-md-6
+                                .container
+                                  p.title_label ¿En qué Fondo/s?
+                                .container
+                                  ul#botoneraFondos
+                                    form(action='')
+                                    li
+                                      input#fondo-A(type='radio', name='selector', checked='checked')
+                                      label(for='fondo-A')
+                                      .check A
+                                    li
+                                      input#fondo-B(type='radio', name='selector')
+                                      label(for='fondo-B')
+                                      .check B
+                                    li
+                                      input#fondo-C(type='radio', name='selector')
+                                      label(for='fondo-C')
+                                      .check C
+                                    li
+                                      input#fondo-D(type='radio', name='selector')
+                                      label(for='fondo-D')
+                                      .check D
+                                    li
+                                      input#fondo-E(type='radio', name='selector')
+                                      label(for='fondo-E')
+                                      .check E
+                                  input.input-sm.in-perc-fondos(onkeypress='return validaNUM(event)', onkeyup='format(this)', onchange='format(this)', type='text', step='1', min='0', max='100', maxlength='3', value='0')
+                                  span.peso %
+                                .container
+                                  ul#botoneraFondos
+                                    form(action='')
+                                      li
+                                        input#fondo-A-filaDos(type='radio', name='selector', checked='checked')
+                                        label(for='fondo-A-filaDos')
+                                        .check A
+                                      li
+                                        input#fondo-B-filaDos(type='radio', name='selector')
+                                        label(for='fondo-B-filaDos')
+                                        .check B
+                                      li
+                                        input#fondo-C-filaDos(type='radio', name='selector')
+                                        label(for='fondo-C-filaDos')
+                                        .check C
+                                      li
+                                        input#fondo-D-filaDos(type='radio', name='selector')
+                                        label(for='fondo-D-filaDos')
+                                        .check D
+                                      li
+                                        input#fondo-E-filaDos(type='radio', name='selector')
+                                        label(for='fondo-E-filaDos')
+                                        .check E
+                                  input.input-sm.in-perc-fondos(onkeypress='return validaNUM(event)', type='number', min='0', max='100', maxlength='3', value='0')
+                                  span.peso %
+                            a(href="#").btdel
+                              img(src='img/icon-close.svg', alt='')
+                      .row.total_box
+                        .col-md-8
+                          .content-input
+                            p
+                              | Total
+                      
+                              |  Ahorros
+                            //- span.peso
+                              //- strong $
+                            input.input-md(type='text', value='0', onkeypress='return validaNUM(event)', onkeyup='format(this)', onchange='format(this)')
+                        .col-md-4.col-xs-12
+                          a#btclon(href="#") + Agregar otra cuenta o ahorro
+                  .border-top
+                    .accordion__title
+                      span.progres.brand-1st.clickTres Pregunta 3
+                      img.icon.icon-plus.accordion__title__icon(src='assets/icons/icon_more.svg', alt='ver má')
+                      img.icon.icon-minus.accordion__title__icon.accordion__title__icon--hide(src='assets/icons/icon_less.svg', alt='ver má')
+                    .accordion__content
+                      ol
+                        li.d2.botonOculto
+                          .row.content_bg
+                            .col-lg-3.col-md-3
+                              p.title_label Tipo de Cuenta
+                              .clearfix
+                              span.custom-dropdown
+                                select#prod-afp.form-user-ctrl.user-select(name='Selecciona un producto', title='Selecciona un producto', data-required='true', aria-required='true')
+                                  option(value='', selected='') Selecciona
+                                  option.general(value='APV') APV
+                                  option.general(value='Depósitos convenidos') Depósitos Convenidos
+                                  option.general(value='Cuenta 2') Cuenta 2
+                                  option.general(value='Bono') Bono Reconocimiento
+                            .col-lg-3.col-md-3
+                              p.title_label Monto
+                              .clearfix
+                              //- span.peso $
+                              input.bor-bott.pp_2(type='text', min='0', max='12000000000', onkeypress='return validaNUM(event)', onkeyup='format(this)', onchange='format(this)', value='0')
+                            .col-lg-6.col-md-6
+                              .container
+                                p.title_label ¿En qué Fondo/s?
+                              .container
+                                ul#botoneraFondos
+                                  li
+                                    input#fondo-A2a(type='radio', name='selector2a', checked='checked')
+                                    label(for='fondo-A2a')
+                                    .check A
+                                  li
+                                    input#fondo-B2a(type='radio', name='selector2a')
+                                    label(for='fondo-B2a')
+                                    .check B
+                                  li
+                                    input#fondo-C2a(type='radio', name='selector2a')
+                                    label(for='fondo-C2a')
+                                    .check C
+                                  li
+                                    input#fondo-D2a(type='radio', name='selector2a')
+                                    label(for='fondo-D2a')
+                                    .check D
+                                  li
+                                    input#fondo-E2a(type='radio', name='selector2a')
+                                    label(for='fondo-E2a')
+                                    .check E
+                                input.input-sm.in-perc-fondos(type='number', min='0', max='100', maxlength='3', value='0', onkeypress='return validaNUM(event)')
+                                span.peso %
+                              .container
+                                ul#botoneraFondos
+                                  li
+                                    input#fondo-A2b(type='radio', name='selector2b', checked='checked')
+                                    label(for='fondo-A2b')
+                                    .check A
+                                  li
+                                    input#fondo-B2b(type='radio', name='selector2b')
+                                    label(for='fondo-B2b')
+                                    .check B
+                                  li
+                                    input#fondo-C2b(type='radio', name='selector2b')
+                                    label(for='fondo-C2b')
+                                    .check C
+                                  li
+                                    input#fondo-D2b(type='radio', name='selector2b')
+                                    label(for='fondo-D2b')
+                                    .check D
+                                  li
+                                    input#fondo-E2b(type='radio', name='selector2b')
+                                    label(for='fondo-E2b')
+                                    .check E
+                                input.input-sm.in-perc-fondos(type='number', min='0', max='100', maxlength='3', value='0', onkeypress='return validaNUM(event)')
+                                span.peso %
+                            .container
+                              p.title_label ¿Por cuánto tiempo vas a ahorrar?
+                              input#unica-vez(type='radio', name='selector')
+                              label.radio(for='unica-vez') Única Vez
+                              input#mensual(type='radio', name='selector')
+                              label.radio(for='mensual') Mensual
+                              
+                              a(href="#").btdel-two
+                                img(src='img/icon-close.svg', alt='')
+                        .row
+                          .container
+                            a#btclon-two(href="#") + Agregar otra cuenta o ahorro
+                  .border-top
+                    .accordion__title
+                      span.progres.brand-1st.clickCuatro Pregunta 4
+                      img.icon.icon-plus.accordion__title__icon(src='assets/icons/icon_more.svg', alt='ver má')
+                      img.icon.icon-minus.accordion__title__icon.accordion__title__icon--hide(src='assets/icons/icon_less.svg', alt='ver má')
+                    .accordion__content
+                      .row.content_bg
+                        .container
+                          ol#dinamico.d3Dest
+                          li.d3.botonOculto
+                            .row
+                              .col-lg-6.col-md-12
+                                p.title_label Parentesco
+                                span.custom-dropdown
+                                  select#prod-afp.form-user-ctrl.user-select(name='Selecciona un producto', title='Selecciona un producto', data-required='true', aria-required='true')
+                                    option(value='', selected='') Selecciona
+                                    option.general(value='Cónyuge femenino') Cónyuge femenino
+                                    option.general(value='Cónyuge masculino') Cónyuge masculino
+                                    option.general(value='Conviviente Civil Femenino') Conviviente Civil Femenino
+                                    option.general(value='Conviviente Civil Masculino') Conviviente Civil Masculino
+                                    option.general(value='Conviviente Femenino') Conviviente Femenino
+                                    option.general(value='Conviviente Masculino') Conviviente Masculino
+                                    option.general(value='Hija') Hija
+                                    option.general(value='Hijo') Hijo
+                                    option.general(value='Madre') Madre
+                                    option.general(value='Padre') Padre
+                              .col-lg-6.col-md-12
+                                  p.title_label.top Nacimiento
+                                  #BirthDate.BirthDate.fixipad
+                                    input#BirthDated.exc.col-md-3.birthDateMonth.required(data-required='true', aria-required='true', type='text', placeholder='DD', maxlength='2', size='2', onkeypress='return validaNUM(event)')
+                                    label.pp_5.col-md-1.sectionBar -
+                                    input#BirthDatem.exc.col-md-3.birthDateDay.required(data-required='true', aria-required='true', type='text', placeholder='MM', maxlength='2', size='2', onkeypress='return validaNUM(event)')
+                                    label.pp_5.col-md-1.sectionBar -
+                                    input#BirthDatey.exc.col-md-3.birthDateYear.required(data-required='true', aria-required='true', type='text', placeholder='AAAA', maxlength='4', size='4', onkeypress='return validaNUM(event)')
+                            .row
+                                .col-lg-6
+                                  p.title_label.top Estado Civil
+                                  span.custom-dropdown
+                                    select#prod-afp.form-user-ctrl.user-select(name='Selecciona un producto', title='Selecciona un producto', data-required='true', aria-required='true')
+                                      option(value='', selected='') Selecciona
+                                      option.general(value='Soltero') Soltero/a
+                                      option.general(value='Casado') Casado/a
+                                      option.general(value='Conviviente Civil (AUC)') Conviviente Civil (AUC)
+                                      option.general(value='Divorciado') Divorciado/a
+                                      option.general(value='Viudo') Viudo/a
+                                .col-lg-6
+                                  p.title_label.top Grado de Invalidez
+                                  span.custom-dropdown
+                                    select#prod-afp.form-user-ctrl.user-select(name='Selecciona un producto', title='Selecciona un producto', data-required='true', aria-required='true')
+                                      option(value='', selected='') Selecciona
+                                      option.general(value='Sin invalidez') Sin invalidez
+                                      option.general(value='Invalidez total') Invalidez total
+                                      option.general(value='Invalidez parcial') Invalidez parcial
+                            a(href="#").btdel-three
+                              img(src='img/icon-close.svg', alt='')
+                      .row
+                        .container
+                          a#btclon-three(href="#") + Agregar otro
+
+    script(src="js/libs/jquery-3.3.1.min.js")
+    script(src="js/libs/bootstrap.min.js")
+    script(src="js/libs/metlife-v2.0.js")
+      
+
+
+
+      
+      
+

@@ -1,0 +1,405 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* * * MEDIAQUERIES * * */
+@media (max-width: 768px) {
+  .main-container {
+    margin: 0 7px !important;
+    width: auto;
+  }
+  .hide-sm {
+    visibility: hidden;
+    display: none;
+  }
+  .show-sm {
+    visibility: visible;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1022px) {
+  .main-container {
+    width: 700px !important;
+  }
+  .hide-md {
+    visibility: hidden;
+    display: none;
+  }
+  .show-md {
+    visibility: visible;
+    display: block;
+  }
+}
+
+@media (min-width: 1023px) {
+  .main-container {
+    width: 900px !important;
+  }
+  .hide-lg {
+    visibility: hidden;
+    display: none;
+  }
+  .show-lg {
+    visibility: visible;
+    display: block;
+  }
+}
+
+.accordion .border-top:last-of-type {
+  border-bottom: 1px solid #ccc;
+}
+
+.accordion .accordion__content {
+  width: 100%;
+  display: none;
+  margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 20px;
+  padding: 0;
+}
+
+.accordion .accordion__content li {
+  list-style: none;
+  margin-left: 0;
+}
+
+.accordion .accordion__content p {
+  font-size: 13px;
+  line-height: 20px;
+  margin: 0 !important;
+}
+
+.accordion .accordion__content .title_label {
+  height: 30px;
+  width: auto;
+}
+
+.accordion .accordion__content .top {
+  margin-top: 20px !important;
+}
+
+.accordion .accordion__content #btclon-two,
+.accordion .accordion__content #btclon-three {
+  float: right;
+  margin: 1.5em 2.9em 0 0;
+}
+
+.accordion .accordion__content input[type="text"]:not(.exc),
+.accordion .accordion__content input[type="number"]:not(.exc) {
+  border: 0;
+  border-bottom-width: 0px;
+  border-bottom-style: none;
+  border-bottom-color: currentcolor;
+  outline: 0;
+  background: none;
+  border-bottom: 4px solid #CECCCF;
+  font-size: 1em;
+  line-height: 19px;
+  color: #686769;
+  width: 100%;
+}
+
+.accordion .content_bg {
+  background-color: aliceblue;
+  margin: 0 37px 0 21px;
+  padding: 1.5em 0;
+  border: 1px solid gainsboro;
+}
+
+.accordion .input-lg {
+  width: 60% !important;
+}
+
+.accordion .input-md {
+  width: 45% !important;
+}
+
+.accordion .input-sm {
+  width: 30% !important;
+}
+
+.accordion .content-input input {
+  display: inline-block;
+  width: 70% !important;
+}
+
+.accordion .content-input p {
+  display: inline-block;
+  width: 27% !important;
+}
+
+.accordion .custom-dropdown {
+  position: relative;
+  vertical-align: middle;
+}
+
+.accordion .custom-dropdown select {
+  background: #fff !important;
+  border: 1px solid #e3e3e3;
+  font-size: 0.813em;
+  padding: 0.438em 0.750em;
+  line-height: inherit;
+  border-radius: 0.125em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: menulist-button;
+  -ms-appearance: none;
+  z-index: 0;
+  width: 100%;
+}
+
+.accordion .total_box {
+  margin: 20px 0 0 10px;
+}
+
+.accordion #botoneraFondos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  float: left;
+  height: 30px;
+  overflow: hidden;
+}
+
+.accordion #botoneraFondos input[type="radio"] {
+  visibility: hidden;
+}
+
+.accordion #botoneraFondos li {
+  color: #AAAAAA;
+  display: inline-block;
+  position: relative;
+  width: 2em;
+  height: 2em;
+  margin: 0;
+}
+
+.accordion #botoneraFondos li input {
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+}
+
+.accordion #botoneraFondos li input:checked ~ label {
+  color: #0DFF92;
+}
+
+.accordion #botoneraFondos li input:checked ~ .check {
+  border: 0.125em solid #B3CC7F;
+  background-color: #D5EFA0;
+}
+
+.accordion #botoneraFondos li label {
+  display: block;
+  position: relative;
+  font-size: 1.35em;
+  padding: 0.7em;
+  margin: 0;
+  z-index: 9;
+  cursor: pointer;
+}
+
+.accordion #botoneraFondos li .check {
+  display: block;
+  position: absolute;
+  border: 0.063em solid #ccc;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  text-align: center;
+  line-height: 1.5em;
+  background-color: #fff;
+}
+
+.accordion__name {
+  padding: 0 20px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.accordion__toggle-all {
+  text-align: right;
+  cursor: pointer;
+  padding: 0 20px 20px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.accordion__toggle-all .collapseAll {
+  display: none;
+}
+
+.accordion__title {
+  display: table;
+  width: 100%;
+  cursor: pointer;
+  padding: 15px 40px 15px 20px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.accordion__title span {
+  display: block;
+  width: 85%;
+  float: left;
+}
+
+.accordion__title:hover span {
+  color: #0090da;
+  text-decoration: underline;
+}
+
+.accordion__title:hover svg {
+  fill: #0090da;
+}
+
+.accordion__title__icon {
+  vertical-align: bottom;
+  width: 16px;
+  height: 18px;
+  position: relative;
+  top: 3px;
+  left: 20px;
+  display: block;
+  float: right;
+}
+
+.accordion__title__icon--hide {
+  display: none;
+}
+
+.accordion__link {
+  display: none;
+}
+
+.accordion__copy {
+  padding-bottom: 0;
+  padding-top: 20px;
+}
+
+.accordion__copy p {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .accordion--50 {
+    float: left;
+  }
+  .accordion__content {
+    padding-right: 40px;
+  }
+  .accordion__name {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .accordion__link {
+    display: block;
+    float: right;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .accordion__name {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+body {
+  background-color: #fff;
+}
+
+.main-container {
+  margin: 5em auto 0 auto !important;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.highlights {
+  border-radius: 1em;
+  font-size: 80%;
+  line-height: 1.6;
+  margin: 2em 0;
+  padding: 2.5em;
+  background: #f0f2f4;
+  overflow: auto;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.highlights pre {
+  width: 100%;
+}
+
+/* * * ELEMENTOS BÁSICOS HTML * * */
+h1 {
+  font-size: 400%;
+  letter-spacing: -2px;
+  margin: 1em 0 0.75em;
+}
+
+h2 {
+  font-size: 250%;
+  letter-spacing: -1px;
+}
+
+h3 {
+  font-size: 200%;
+  line-height: 1.19;
+  margin: 1em 0 0.5em 0;
+}
+
+p {
+  font-size: 18px;
+  margin: 1.5em 0;
+}
+
+pre {
+  font-size: 16px;
+}

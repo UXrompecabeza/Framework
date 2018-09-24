@@ -1,0 +1,128 @@
+
+.accordion__name {
+    padding: 0 20px 20px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.accordion__toggle-all {
+    text-align: right;
+    cursor: pointer;
+    padding: 0 20px 20px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.accordion__toggle-all .collapseAll {
+    display: none;
+}
+
+.accordion .border-top:last-of-type {
+    border-bottom: 1px solid #ccc;
+}
+
+.accordion__title {
+    display: table;
+    width: 100%;
+    cursor: pointer;
+    padding: 15px 40px 15px 20px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.accordion__title span {
+    display: block;
+    width: 85%;
+    float: left;
+}
+
+.accordion svg, .accordion svg:focus:hover {
+    fill: #0061a0;
+}
+
+.accordion__title:hover span {
+    color: #0090da;
+    text-decoration: underline;
+}
+
+.accordion__title:hover svg {
+    fill: #0090da;
+}
+
+.accordion__title__icon {
+    vertical-align: bottom;
+    width: 16px;
+    height: 18px;
+    position: relative;
+    top: 3px;
+    left: 20px;
+    display: block;
+}
+
+.accordion__title__icon--hide {
+    display: none;
+}
+
+.accordion__link {
+    display: none;
+}
+
+.accordion__content {
+    width: 100%;
+    display: none;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    font-size: 13px;
+    line-height: 20px;
+    padding-right: 30px;
+}
+
+.accordion__content p {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.accordion__content li {
+    margin-left: 20px;
+    list-style: disc;
+}
+
+.accordion__copy {
+    padding-bottom: 0;
+    padding-top: 20px
+}
+
+.accordion__copy p {
+    margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .accordion--50 {
+        float: left;
+    }
+
+    .accordion__content {
+        padding-right: 40px;
+    }
+
+    .accordion__name {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .accordion__link {
+        display: block;
+        float: right;
+        padding: 20px;
+        font-size: 14px;
+        line-height:18px;
+    }
+
+    .accordion__name {
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
