@@ -28,45 +28,20 @@
           <h1>Guía de validaciones de formularios en Jquery</h1><br/>
           <div id="input-solo-texto">
             <h3>Input solo texto</h3><br/>
-            <input type="text" name=""/>
+            <input class="input-text" type="text" name=""/>
             <div class="highlights">
-              <pre>function soloLetras(e) {
-  key = e.keyCode || e.which;
-  tecla = String.fromCharCode(key).toLowerCase();
-  letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-  especiales = "8-37-39-46";
-
-  tecla_especial = false
-  for (var i in especiales) {
-      if (key == especiales[i]) {
-          tecla_especial = true;
-          break;
-      }
-  }
-
-  if (letras.indexOf(tecla) == -1 && !tecla_especial) {
-      return false;
-  }
-}</pre>
+              <pre>$('.input-text').on('input', function () {
+  this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+});</pre>
             </div><br/>
           </div>
           <div id="input-solo-numero">
             <h3>Input numérico</h3><br/>
-            <input type="text" name=""/>
+            <input class="input-number" type="text" name=""/>
             <div class="highlights">
-              <pre>function validaNUM(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
-
-    //Tecla de retroceso para borrar, siempre la permite
-    if (tecla == 8) {
-        return true;
-    }
-
-    // Patron de entrada, en este caso solo acepta numeros
-    patron = /[0-9]/;
-    tecla_final = String.fromCharCode(tecla);
-    return patron.test(tecla_final);
-}</pre>
+              <pre>$('.input-number').on('input', function () {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});</pre>
             </div>
           </div><br/>
           <div id="input-rango1">
@@ -93,56 +68,44 @@ function limitMe(e) {
           </div><br/>
           <div id="input-rut">
             <h3>Input rut</h3><br/>
-            <input type="text" name=""/>
+            <input class="input-rut" type="text" name=""/>
+            <div id="isValidRut"></div>
             <div class="highlights">
-              <pre>function checkRut(rut) {
-    // Despejar Puntos
-    var valor = rut.value.replace('.','');
-    // Despejar Guión
-    valor = valor.replace('-','');
-    
-    
-    // Aislar Cuerpo y Dígito Verificador
-    cuerpo = valor.slice(0,-1);
-    dv = valor.slice(-1).toUpperCase();
-    
-    // Formatear RUN
-    rut.value = cuerpo + '-'+ dv
-    
-    // Si no cumple con el mínimo ej. (n.nnn.nnn)
-    if(cuerpo.length < 7) { 
-        return false;
-    }
-
-    // Calcular Dígito Verificador
-    suma = 0;
-    multiplo = 2;
-    
-    // Para cada dígito del Cuerpo
-    for(i=1;i<=cuerpo.length;i++) {
-    
-        // Obtener su Producto con el Múltiplo Correspondiente
-        index = multiplo * valor.charAt(cuerpo.length - i);
-        
-        // Sumar al Contador General
-        suma = suma + index;
-        
-        // Consolidar Múltiplo dentro del rango [2,7]
-        if(multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
-  
-    }
-    
-    // Calcular Dígito Verificador en base al Módulo 11
-    dvEsperado = 11 - (suma % 11);
-    
-    // Casos Especiales (0 y K)
-    dv = (dv == 'K')?10:dv;
-    dv = (dv == 0)?11:dv;
-    
-    // Validar que el Cuerpo coincide con su Dígito Verificador
-    if(dvEsperado != dv) {  return false; }
-    
-    // Si todo sale bien, eliminar errores (decretar que es válido)
+              <pre>$('.input-rut').on('input', function () {
+  this.value = this.value.replace(/[^kK0-9\_]/g, '');
+  let value = this.value;
+  if (value.length > 1) {
+      value = value.substring(0, value.length - 1) + '-' + value.substring(value.length - 1, value.length);
+  }
+  if (value.length > 5) {
+      value = value.substring(0, value.length - 5) + '.' + value.substring(value.length - 5, value.length);
+  }
+  if (value.length > 9) {
+      value = value.substring(0, value.length - 9) + '.' + value.substring(value.length - 9, value.length);
+  }
+  this.value = value;
+  if (value.length >= 11) {
+      let valor = value.replace(".", "").replace(".", "");
+      //Remueve y agrega texto error
+      Fn.validaRut(valor) ? $("#isValidRut").empty() : $("#isValidRut").append("<&zwj;p>Rut inválido, por favor verifíquelo<&zwj;/p>");
+  }
+});
+let Fn = {
+  validaRut: function (rutCompleto) {
+      if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test(rutCompleto))
+          return false;
+      let tmp = rutCompleto.split('-');
+      let digv = tmp[1];
+      let rut = tmp[0];
+      if (digv == 'K') digv = 'k';
+      return (Fn.dv(rut) == digv);
+  },
+  dv: function (T) {
+      let M = 0, S = 1;
+      for (; T; T = Math.floor(T / 10))
+          S = (S + T % 10 * (9 - M++ % 6)) % 11;
+      return S ? S - 1 : 'k';
+  }
 }</pre>
             </div>
           </div><br/>
@@ -250,30 +213,42 @@ function limitMe(e) {
           </div><br/>
           <div id="input-fecha2">
             <h3>Input fecha 2 (formateada 01/08/2018)</h3><br/>
-            <input type="text" name=""/>
+            <input class="input-date" type="text" name=""/>
+            <div id="isValidDate"></div>
             <div class="highlights">
-              <pre>function validar()
-{
-    var contenido=document.getElementById('mail').value;
-    var conte=contenido.split("@");
-    if(!conte[1] || conte[0]=="")
-    {
-      alert('no es correo valido(1)');
+              <pre>$('.input-date').on('input', function () {
+    this.value = this.value.replace(/[^0-9\_]/g, '');
+    let value = this.value;
+    if (value.length > 4) {
+        value = value.substring(0, value.length - 4) + '/' + value.substring(value.length - 4, value.length);
     }
-    else
-    {
-      var cont1=conte[0].split(".");
-      var cont2=conte[1].split(".");
-      if(!cont1[1])
-      {
-        alert('no es correo valido(2)');
-      }
-      else if(!cont2[1])
-      {
-        alert('no es correo valido(3)');
-      }
+    if (value.length > 7) {
+        value = value.substring(0, value.length - 7) + '/' + value.substring(value.length - 7, value.length);
     }
-}</pre>
+    this.value = value;
+    if (value.length > 9) {
+        //Remueve y agrega texto de error
+        birth(value) ? $( "#isValidDate" ).empty() : $("#isValidDate").append( "<&zwj;p>Fecha inválida, por favor verifíquela<&zwj;/p> );
+    }
+});
+function birth(dateString) {
+    if (!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+        return false;
+    var parts = dateString.split("/");
+    var month = parseInt(parts[1], 10);
+    var day = parseInt(parts[0], 10);
+    var year = parseInt(parts[2], 10);
+
+    if (year < 1900 || year > 2020 || month == 0 || month > 12)
+        return false;
+
+    var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+        monthLength[1] = 29;
+
+    return day > 0 && day <= monthLength[month - 1];
+};</pre>
             </div>
           </div><br/>
           <div id="input-fecha3">
