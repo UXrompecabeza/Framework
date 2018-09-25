@@ -1,0 +1,126 @@
+//INPUT DATEPICKER
+.datepicker-area {
+    input {
+        border: none;
+        background-image: url('../assets/icons/icon-calendar.svg');
+        background-repeat: no-repeat;
+        background-position: 6% 44%;
+        color: #333;
+        &:focus {
+            border: none;
+        }
+        font-size: 13px;
+        border: 1px solid #333;
+        border-radius: 2px;
+        height: 34px;
+        padding: 0 .7em 0 37px;
+        -webkit-appearance: none;
+        -moz-appearance: none; 
+        &:focus {
+            border: 1px solid #333;
+            outline: none;
+        }
+        &::placeholder {
+            color: #333;
+            opacity: 1;
+        }
+        &::-ms-expand {
+            display: none;
+        }
+        &:disabled {
+            background: transparent!important;
+            border: none !important;
+        }
+        @media (max-width: 768px) { 
+            
+                font-size: 16px!important;
+        
+        }
+    }
+}
+
+.ui-datepicker {
+    background-color: white;
+    border: 1px solid #333;
+    background-color: white;
+    padding: 1em;
+    width: 245px;
+    height: auto;
+    font-size: 11px;
+    display: none;
+    .ui-datepicker-header {
+        a {
+            display: inline-block;
+        }
+        .ui-datepicker-prev,
+        .ui-datepicker-next {
+            display: block;
+            height: 16px;
+            width: 16px;
+            z-index: 1;
+        }
+
+        .ui-datepicker-prev span,
+        .ui-datepicker-next span {
+            z-index: 1;
+        }
+
+        .ui-datepicker-prev span  {
+            background-image: url(../assets/icons/icon_chevron-left.svg);
+            width: 2em;
+            height: 16px;
+            background-repeat: no-repeat;
+            display: block;
+        }
+        .ui-datepicker-next {
+            float: right;
+            text-align: right;
+            position: relative;
+            bottom: 16px;
+            span {
+                float: right;
+                text-align: right;
+                background-image: url(../assets/icons/icon_chevron-right.svg);
+                width: 2em;
+                height: 16px;
+                background-repeat: no-repeat;
+                position: relative;
+                left: 12px;
+            }
+        }
+        .ui-datepicker-title {
+            font-size: 13px !important;
+            display: inline-block;
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+            position: relative;
+            bottom: 18px;
+            font-weight: 600;
+            z-index: 0;
+            width: 80%;
+        }
+    }
+    .ui-datepicker-calendar {
+        font-size: 11px;
+        color: #b7b5ae;
+        width: 100%;
+        margin-top: 1em;
+        span {
+            font-weight: 100;
+        }
+        a {
+            color: #b7b5ae;
+            padding: 2px;
+            font-weight: 100;
+        }
+        
+        tbody {
+            tr {
+                td {
+                    padding: .5em 0;
+                }
+            }
+        }
+    }
+}

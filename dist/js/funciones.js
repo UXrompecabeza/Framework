@@ -133,4 +133,28 @@ $('#select-beast').selectize({
     dropdownParent: 'body'
 });
 
+//input fecha datepicker
 
+jQuery(document).ready(function(){
+    jQuery('.datepicker2').datepicker();
+});
+
+// input moneda
+
+$(".addDot").on('input', function (e) {
+    let element = e.target;
+    let value = element.value;
+    element.value = formatNumber(value);
+});
+
+//input fecha 3 input
+
+function limitMe(e) {
+    if (e.keyCode == 8) { return true; }
+    return this.value.length < $(this).attr("maxLength");
+}
+
+
+$('.input-dia').attr('maxLength', '2').keypress(limitMe);
+$('.input-mes').attr('maxLength', '2').keypress(limitMe);
+$('.input-anno').attr('maxLength', '4').keypress(limitMe);
