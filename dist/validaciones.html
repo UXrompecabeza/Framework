@@ -18,12 +18,19 @@
           <li class="nav-item"> <a class="nav-link" href="acordeon.html">Acordeón</a></li>
         </ul>
       </div>
-    </nav>
-    <div class="main-container">
-      <h1>Guía de validaciones de formularios en Jquery</h1><br/>
-      <h3>Input texto</h3>
-      <div class="highlights">
-        <pre>function soloLetras(e) {
+    </nav><br/><br/>
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar"><br/>
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical"><a class="nav-link active" id="v-pills-home-tab" href="#input-solo-texto">Solo Texto</a><a class="nav-link" id="v-pills-profile-tab" href="#input-solo-numero">Solo número</a><a class="nav-link" id="v-pills-messages-tab" href="#input-rango1">Rango min/max (caracteres)</a><a class="nav-link" id="v-pills-messages-tab" href="#input-rango2">Rango min/max (valor)</a><a class="nav-link" id="v-pills-settings-tab" href="#input-rut">Input rut</a><a class="nav-link" id="v-pills-settings-tab" href="#input-email">Input email</a><a class="nav-link" id="v-pills-settings-tab" href="#input-moneda">Input moneda (miles y $)</a><a class="nav-link" id="v-pills-settings-tab" href="#input-fecha1">Input fecha 1</a><a class="nav-link" id="v-pills-settings-tab" href="#input-fecha2">Input fecha 2</a><a class="nav-link" id="v-pills-settings-tab" href="#input-fecha3">Input fecha 3</a><a class="nav-link" id="v-pills-settings-tab" href="#selectize-autocomplete">Selectize autocomplete/select</a><a class="nav-link" id="v-pills-settings-tab" href="#selectize-selectgroup">Selectize select group</a><a class="nav-link" id="v-pills-settings-tab" href="#selectize-checkbox">Selectize checkbox</a><a class="nav-link" id="v-pills-settings-tab" href="#input-radiobutton">Radiobutton group</a><a class="nav-link" id="v-pills-settings-tab" href="#input-checkbox">Checkbox group</a><a class="nav-link" id="v-pills-settings-tab" href="#boton">Botón habilitado/deshabilitado</a><a class="nav-link" id="v-pills-settings-tab" href="#obligatorio">Campo obligatorio</a></div>
+      </nav>
+      <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="main-container">
+          <h1>Guía de validaciones de formularios en Jquery</h1><br/>
+          <div id="input-solo-texto">
+            <h3>Input solo texto</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function soloLetras(e) {
   key = e.keyCode || e.which;
   tecla = String.fromCharCode(key).toLowerCase();
   letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
@@ -41,10 +48,13 @@
       return false;
   }
 }</pre>
-      </div><br/>
-      <h3>Input numérico</h3>
-      <div class="highlights">
-        <pre>function validaNUM(e) {
+            </div><br/>
+          </div>
+          <div id="input-solo-numero">
+            <h3>Input numérico</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function validaNUM(e) {
     tecla = (document.all) ? e.keyCode : e.which;
 
     //Tecla de retroceso para borrar, siempre la permite
@@ -57,18 +67,35 @@
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
 }</pre>
-      </div><br/>
-      <h3>Input rango (min/max)</h3>
-      <div class="highlights">
-        <pre>$('input#nom_form').attr('maxLength', '30').keypress(limitMe);
+            </div>
+          </div><br/>
+          <div id="input-rango1">
+            <h3>Input rango caracteres (min/max) </h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>$('input#nom_form').attr('maxLength', '30').keypress(limitMe);
 function limitMe(e) {
     if (e.keyCode == 8) { return true; }
     return this.value.length < $(this).attr("maxLength");
 }</pre>
-      </div><br/>
-      <h3>Input rut</h3>
-      <div class="highlights">
-        <pre>function checkRut(rut) {
+            </div>
+          </div><br/>
+          <div id="input-rango2">
+            <h3>Input rango valor (min/max) </h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>$('input#nom_form').attr('maxLength', '30').keypress(limitMe);
+function limitMe(e) {
+    if (e.keyCode == 8) { return true; }
+    return this.value.length < $(this).attr("maxLength");
+}</pre>
+            </div>
+          </div><br/>
+          <div id="input-rut">
+            <h3>Input rut</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function checkRut(rut) {
     // Despejar Puntos
     var valor = rut.value.replace('.','');
     // Despejar Guión
@@ -117,10 +144,68 @@ function limitMe(e) {
     
     // Si todo sale bien, eliminar errores (decretar que es válido)
 }</pre>
-      </div><br/>
-      <h3>Input formato moneda</h3>
-      <div class="highlights">
-        <pre>function format(input) {
+            </div>
+          </div><br/>
+          <div id="input-email">
+            <h3>Input email</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function checkRut(rut) {
+    // Despejar Puntos
+    var valor = rut.value.replace('.','');
+    // Despejar Guión
+    valor = valor.replace('-','');
+    
+    
+    // Aislar Cuerpo y Dígito Verificador
+    cuerpo = valor.slice(0,-1);
+    dv = valor.slice(-1).toUpperCase();
+    
+    // Formatear RUN
+    rut.value = cuerpo + '-'+ dv
+    
+    // Si no cumple con el mínimo ej. (n.nnn.nnn)
+    if(cuerpo.length < 7) { 
+        return false;
+    }
+
+    // Calcular Dígito Verificador
+    suma = 0;
+    multiplo = 2;
+    
+    // Para cada dígito del Cuerpo
+    for(i=1;i<=cuerpo.length;i++) {
+    
+        // Obtener su Producto con el Múltiplo Correspondiente
+        index = multiplo * valor.charAt(cuerpo.length - i);
+        
+        // Sumar al Contador General
+        suma = suma + index;
+        
+        // Consolidar Múltiplo dentro del rango [2,7]
+        if(multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
+  
+    }
+    
+    // Calcular Dígito Verificador en base al Módulo 11
+    dvEsperado = 11 - (suma % 11);
+    
+    // Casos Especiales (0 y K)
+    dv = (dv == 'K')?10:dv;
+    dv = (dv == 0)?11:dv;
+    
+    // Validar que el Cuerpo coincide con su Dígito Verificador
+    if(dvEsperado != dv) {  return false; }
+    
+    // Si todo sale bien, eliminar errores (decretar que es válido)
+}</pre>
+            </div>
+          </div><br/>
+          <div id="input-moneda">
+            <h3>Input formato moneda (miles y $)</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function format(input) {
   var num = input.value.replace(/\./g, '');
   if (!isNaN(num)) {
   num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g, '$1.');
@@ -131,10 +216,15 @@ function limitMe(e) {
   input.value = input.value.replace(/[^\d\.]*/g, '');
   }
 }</pre>
-      </div><br/>
-      <h3>Input email</h3>
-      <div class="highlights">
-        <pre>function validar()
+            </div>
+          </div><br/>
+          <div id="input-fecha1">
+            <h3>Input fecha 1 (tres campos)</h3><br/>
+            <input type="text" name=""/>
+            <input type="text" name=""/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function validar()
 {
     var contenido=document.getElementById('mail').value;
     var conte=contenido.split("@");
@@ -156,21 +246,224 @@ function limitMe(e) {
       }
     }
 }</pre>
-      </div><br/>
-      <h3>Input obligatorio</h3>
-      <div class="highlights">
-        <pre>$(".date1").keypress(function() {
-  if ($(".date1") == '') {
-      $('.date1').addClass("rut-error");
-  } else {
-      $(".date1").removeClass("rut-error");
-  }
-});</pre>
-      </div><br/>
-      <h3>Boton activo y deshabilitado</h3>
-      <div class="highlights">
-        <p>
-          <pre>$(".item-pass &gt; :input").keyup(function() {
+            </div>
+          </div><br/>
+          <div id="input-fecha2">
+            <h3>Input fecha 2 (formateada 01/08/2018)</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function validar()
+{
+    var contenido=document.getElementById('mail').value;
+    var conte=contenido.split("@");
+    if(!conte[1] || conte[0]=="")
+    {
+      alert('no es correo valido(1)');
+    }
+    else
+    {
+      var cont1=conte[0].split(".");
+      var cont2=conte[1].split(".");
+      if(!cont1[1])
+      {
+        alert('no es correo valido(2)');
+      }
+      else if(!cont2[1])
+      {
+        alert('no es correo valido(3)');
+      }
+    }
+}</pre>
+            </div>
+          </div><br/>
+          <div id="input-fecha3">
+            <h3>Input fecha 3 (datepicker)</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function validar()
+{
+    var contenido=document.getElementById('mail').value;
+    var conte=contenido.split("@");
+    if(!conte[1] || conte[0]=="")
+    {
+      alert('no es correo valido(1)');
+    }
+    else
+    {
+      var cont1=conte[0].split(".");
+      var cont2=conte[1].split(".");
+      if(!cont1[1])
+      {
+        alert('no es correo valido(2)');
+      }
+      else if(!cont2[1])
+      {
+        alert('no es correo valido(3)');
+      }
+    }
+}</pre>
+            </div>
+          </div><br/>
+          <div id="selectize-autocomplete">
+            <h3>Selectize Autocomplete/Select</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function validar()
+{
+    var contenido=document.getElementById('mail').value;
+    var conte=contenido.split("@");
+    if(!conte[1] || conte[0]=="")
+    {
+      alert('no es correo valido(1)');
+    }
+    else
+    {
+      var cont1=conte[0].split(".");
+      var cont2=conte[1].split(".");
+      if(!cont1[1])
+      {
+        alert('no es correo valido(2)');
+      }
+      else if(!cont2[1])
+      {
+        alert('no es correo valido(3)');
+      }
+    }
+}</pre>
+            </div>
+          </div><br/>
+          <div id="selectize-selectgroup">
+            <h3>Selectize select group</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function validar()
+{
+    var contenido=document.getElementById('mail').value;
+    var conte=contenido.split("@");
+    if(!conte[1] || conte[0]=="")
+    {
+      alert('no es correo valido(1)');
+    }
+    else
+    {
+      var cont1=conte[0].split(".");
+      var cont2=conte[1].split(".");
+      if(!cont1[1])
+      {
+        alert('no es correo valido(2)');
+      }
+      else if(!cont2[1])
+      {
+        alert('no es correo valido(3)');
+      }
+    }
+}</pre>
+            </div>
+          </div><br/>
+          <div id="selectize-checkbox">
+            <h3>Selectize checkbox</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>function validar()
+{
+    var contenido=document.getElementById('mail').value;
+    var conte=contenido.split("@");
+    if(!conte[1] || conte[0]=="")
+    {
+      alert('no es correo valido(1)');
+    }
+    else
+    {
+      var cont1=conte[0].split(".");
+      var cont2=conte[1].split(".");
+      if(!cont1[1])
+      {
+        alert('no es correo valido(2)');
+      }
+      else if(!cont2[1])
+      {
+        alert('no es correo valido(3)');
+      }
+    }
+}</pre>
+            </div>
+          </div><br/>
+          <div id="input-radiobutton">
+            <h3>Radiobutton group</h3><br/>
+            <div class="form-check">
+              <input class="form-check-input" id="exampleRadios1" type="radio" name="exampleRadios" value="option1" checked=""/>  
+              <label class="form-check-label" for="exampleRadios1">Default radio</label><br/>
+              <input class="form-check-input" id="exampleRadios2" type="radio" name="exampleRadios" value="option1" checked=""/>  
+              <label class="form-check-label" for="exampleRadios2">Default radio</label><br/>
+              <input class="form-check-input" id="exampleRadios3" type="radio" name="exampleRadios" value="option1" checked=""/>  
+              <label class="form-check-label" for="exampleRadios3">Default radio</label>
+            </div>
+            <div class="highlights">
+              <pre>function validar()
+{
+    var contenido=document.getElementById('mail').value;
+    var conte=contenido.split("@");
+    if(!conte[1] || conte[0]=="")
+    {
+      alert('no es correo valido(1)');
+    }
+    else
+    {
+      var cont1=conte[0].split(".");
+      var cont2=conte[1].split(".");
+      if(!cont1[1])
+      {
+        alert('no es correo valido(2)');
+      }
+      else if(!cont2[1])
+      {
+        alert('no es correo valido(3)');
+      }
+    }
+}</pre>
+            </div>
+          </div><br/>
+          <div id="input-checkbox">
+            <h3>Checkbox group</h3><br/>
+            <div class="form-check">
+              <input class="form-check-input" id="defaultCheck1" type="checkbox" value=""/>  
+              <label class="form-check-label" for="defaultCheck1">Default checkbox</label><br/>
+              <input class="form-check-input" id="defaultCheck2" type="checkbox" value=""/>  
+              <label class="form-check-label" for="defaultCheck2">Default checkbox</label><br/>
+              <input class="form-check-input" id="defaultCheck3" type="checkbox" value=""/> 
+              <label class="form-check-label" for="defaultCheck3">Default checkbox</label>
+            </div>
+            <div class="highlights">
+              <pre>function validar()
+{
+    var contenido=document.getElementById('mail').value;
+    var conte=contenido.split("@");
+    if(!conte[1] || conte[0]=="")
+    {
+      alert('no es correo valido(1)');
+    }
+    else
+    {
+      var cont1=conte[0].split(".");
+      var cont2=conte[1].split(".");
+      if(!cont1[1])
+      {
+        alert('no es correo valido(2)');
+      }
+      else if(!cont2[1])
+      {
+        alert('no es correo valido(3)');
+      }
+    }
+}</pre>
+            </div>
+          </div><br/>
+          <div id="boton">
+            <h3>Botón activo y deshabilitado</h3><br/>
+            <button class="btn btn-primary" type="button">Enviar</button>
+            <div class="highlights">
+              <p>
+                <pre>$(".item-pass &gt; :input").keyup(function() {
   var $emptyFields = $('.item-pass &gt; :input').filter(function() {
     return $.trim(this.value) === "";
   });
@@ -179,14 +472,29 @@ function limitMe(e) {
     $('.btn.redDisable').removeClass('redDisable').addClass('red');
     $('.btn.whiteDisable').removeClass('whiteDisable').addClass('white');
   }
-});
-</pre>
-        </p>
+});</pre>
+              </p>
+            </div>
+          </div><br/>
+          <div id="obligatorio">
+            <h3>Input obligatorio</h3><br/>
+            <input type="text" name=""/>
+            <div class="highlights">
+              <pre>$(".date1").keypress(function() {
+  if ($(".date1") == '') {
+      $('.date1').addClass("rut-error");
+  } else {
+      $(".date1").removeClass("rut-error");
+  }
+});</pre>
+            </div>
+          </div><br/>
+        </div>
+        <script src="js/libs/jquery-3.3.1.min.js"></script>
+        <script src="js/libs/bootstrap.min.js"></script>
+        <script src="js/libs/highlight.js"></script>
+        <script src="js/funciones.js"></script>
       </div>
-      <script src="js/libs/jquery-3.3.1.min.js"></script>
-      <script src="js/libs/bootstrap.min.js"></script>
-      <script src="js/libs/highlight.js"></script>
-      <script src="js/funciones.js"></script>
     </div>
   </body>
 </html>
