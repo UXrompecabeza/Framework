@@ -24,8 +24,8 @@ $('.input-rut').on('input', function () {
     this.value = value;
     if (value.length >= 11) {
         let valor = value.replace(".", "").replace(".", "");
-        //Remueve y agrega clases de error
-        Fn.validaRut(valor) ? $('.input-rut').removeClass('invalidate').addClass('validate') : $('.input-rut').removeClass('validate').addClass('invalidate');
+        //Remueve y agrega texto error
+        Fn.validaRut(valor) ? $( "#isValidRut" ).empty() : $("#isValidRut").append( "<p>Rut inválido, por favor verifíquelo</p>" );
     }
 });
 var Fn = {
@@ -47,7 +47,7 @@ var Fn = {
 }
 
 // Formato Fecha con separador tipo / + validador fecha
-$('.input-nacimiento').on('input', function () {
+$('.input-date').on('input', function () {
     this.value = this.value.replace(/[^0-9\_]/g, '');
     let value = this.value;
     if (value.length > 4) {
@@ -58,8 +58,8 @@ $('.input-nacimiento').on('input', function () {
     }
     this.value = value;
     if (value.length > 9) {
-        //Remueve y agrega clases de error
-        birth(value) ? $('.input-nacimiento').removeClass('invalidate').addClass('validate') : $('.input-nacimiento').removeClass('validate').addClass('invalidate');
+        //Remueve y agrega texto de error
+        birth(value) ? $( "#isValidDate" ).empty() : $("#isValidDate").append( "<p>Fecha inválida, por favor verifíquela</p>" );
     }
 });
 function birth(dateString) {
