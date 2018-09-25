@@ -132,3 +132,5 @@ $('#select-beast').selectize({
     },
     dropdownParent: 'body'
 });
+
+
