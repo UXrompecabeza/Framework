@@ -5,6 +5,8 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     link(rel='stylesheet', href='css/styles.css')
     link(rel='stylesheet', href='css/libs/bootstrap.min.css')
+    link(rel='stylesheet', href='css/libs/multiple-select.css')
+    link(rel='stylesheet', href='css/libs/selectize.css')
     link(href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,700" rel="stylesheet") 
     title Rompecabeza UX
 
@@ -331,36 +333,35 @@ html(lang='en')
           #selectize-autocomplete
             h3 Selectize Autocomplete/Select
             br
-            input(type="text", name="")
+            .control-group
+              label(for="select-beast") Beast:
+              | 					
+              select#select-beast.demo-default(placeholder="Select a person...")
+                option(value="") Select a person...
+                | 						
+                option(value="4") Thomas Edison
+                | 						
+                option(value="1") Nikola
+                | 						
+                option(value="3") Nikola Tesla
+                | 						
+                option(value="5") Arnold Schwarzenegger
             .highlights
               pre.
-                function validar()
-                {
-                    var contenido=document.getElementById('mail').value;
-                    var conte=contenido.split("@");
-                    if(!conte[1] || conte[0]=="")
-                    {
-                      alert('no es correo valido(1)');
-                    }
-                    else
-                    {
-                      var cont1=conte[0].split(".");
-                      var cont2=conte[1].split(".");
-                      if(!cont1[1])
-                      {
-                        alert('no es correo valido(2)');
-                      }
-                      else if(!cont2[1])
-                      {
-                        alert('no es correo valido(3)');
-                      }
-                    }
-                }
+                $('#input-tags').selectize({
+                    persist: false,
+                    createOnBlur: true,
+                    create: true
+                });
           br
           #selectize-selectgroup
             h3 Selectize select group
             br
-            input(type="text", name="")
+            .demo
+              .control-group
+                label(for="input-tags") Tags:
+                | 					
+                input#input-tags.demo-default(type="text", value="awesome,neat")
             .highlights
               pre.
                 function validar()
@@ -389,31 +390,43 @@ html(lang='en')
           #selectize-checkbox
             h3 Selectize checkbox
             br
-            input(type="text", name="")
+            .form-group
+              label Month
+              |         
+              select#ms(multiple="multiple")
+                option(value="1") January
+                |             
+                option(value="2") February
+                |             
+                option(value="3") March
+                |             
+                option(value="4") April
+                |             
+                option(value="5") May
+                |             
+                option(value="6") June
+                |             
+                option(value="7") July
+                |             
+                option(value="8") August
+                |             
+                option(value="9") September
+                |             
+                option(value="10") October
+                |             
+                option(value="11") November
+                |             
+                option(value="12") December
             .highlights
               pre.
-                function validar()
-                {
-                    var contenido=document.getElementById('mail').value;
-                    var conte=contenido.split("@");
-                    if(!conte[1] || conte[0]=="")
-                    {
-                      alert('no es correo valido(1)');
-                    }
-                    else
-                    {
-                      var cont1=conte[0].split(".");
-                      var cont2=conte[1].split(".");
-                      if(!cont1[1])
-                      {
-                        alert('no es correo valido(2)');
-                      }
-                      else if(!cont2[1])
-                      {
-                        alert('no es correo valido(3)');
-                      }
-                    }
-                }
+                $(function() {
+                    $('#ms').change(function() {
+                        console.log($(this).val());
+                    }).multipleSelect({
+                        width: '100%',
+                        minimumCountSelected: 6
+                    });
+                });
           br
           #input-radiobutton
             h3 Radiobutton group
@@ -537,6 +550,8 @@ html(lang='en')
         script(src="js/libs/jquery-3.3.1.min.js")
         script(src="js/libs/bootstrap.min.js")
         script(src="js/libs/highlight.js")
+        script(src="js/libs/multiple-select.js")
+        script(src="js/libs/selectize.js")
         script(src="js/funciones.js")
   
 

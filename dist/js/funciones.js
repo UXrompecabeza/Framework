@@ -103,3 +103,32 @@ $(".addDot").on('input', function (e) {
     let value = element.value;
     element.value = formatNumber(value);
 });
+
+//Selectize Checkbox
+$(function() {
+    $('#ms').change(function() {
+        console.log($(this).val());
+    }).multipleSelect({
+        width: '100%',
+        minimumCountSelected: 6
+    });
+});
+
+// Selectize select group
+
+    $('#input-tags').selectize({
+        persist: false,
+        createOnBlur: true,
+        create: true
+    });
+
+// Selectize autocomplete
+
+$('#select-beast').selectize({
+    create: true,
+    sortField: {
+        field: 'text',
+        direction: 'asc'
+    },
+    dropdownParent: 'body'
+});
